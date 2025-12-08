@@ -119,7 +119,7 @@ export default function TaskForm({ isOpen, onClose, onSave, initialData }) {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save Task</Button>
+            <Button type="submit" className="bg-blue-500">Save Task</Button>
           </DialogFooter>
         </form>
       </DialogContent>
