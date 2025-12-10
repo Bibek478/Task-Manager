@@ -1,16 +1,77 @@
-# React + Vite
+# Task Manager (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small task management UI built with React and Vite. Uses Tailwind CSS, Radix UI primitives, and a set of lightweight UI components. Tasks are persisted to localStorage so you can add, edit, delete and filter tasks without a backend.
 
-Currently, two official plugins are available:
+Quick features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create, edit and delete tasks
+- Filter by priority and status, and search by title
+- Simple pagination and progress tracking
+- Local state persisted to localStorage
+- Built with Vite, React, Tailwind, Radix primitives, and shadcn-style components
 
-## React Compiler
+Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18+ (recommended)
+- npm (or yarn/pnpm)
 
-## Expanding the ESLint configuration
+Getting started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+2. Run development server
+
+   ```bash
+   npm run dev
+   ```
+
+   Open http://localhost:5173 (or the port printed by Vite)
+
+3. Build for production
+
+   ```bash
+   npm run build
+   ```
+
+4. Preview production build locally
+
+   ```bash
+   npm run preview
+   ```
+
+Available scripts
+
+- `npm run dev` — start Vite dev server
+- `npm run build` — build production bundle
+- `npm run preview` — preview the built app
+- `npm run lint` — run ESLint
+
+Project notes
+
+- Styling: Tailwind CSS is used (tailwind v4). The project uses CSS variables declared in `src/App.css`.
+- Components: UI primitives live under `src/components/ui` (input, select, button, dialog, etc.). App-level components are in `src/components` (TaskItem, TaskForm, TaskControls, Pagination, ProgressTracker).
+- Persistence: Tasks are stored in browser localStorage under the "tasks" key. If localStorage data is corrupt, the app will reset that key.
+- Pagination: itemsPerPage is 5 by default in `App.jsx`.
+- Icons: Lucide icons are used.
+
+Troubleshooting
+
+- If styles don't apply, ensure Tailwind is set up and PostCSS is configured. Restart dev server after changing tailwind config or CSS entry files.
+- If the app fails to load on first run, check the console for errors about missing packages; run `npm install` again.
+- If localStorage contains invalid JSON, delete the "tasks" key via browser devtools Application → Local Storage.
+
+Where to look in the code
+
+- Entry: `src/main.jsx`
+- App shell & logic: `src/App.jsx`
+- UI components: `src/components/ui/*`
+- App components: `src/components/*.jsx`
+- Tailwind / theme variables: `src/App.css` and `src/index.css`
+
+License
+
+This repository contains example/demo code; add a license if you plan to publish.
