@@ -9,8 +9,15 @@ import ProgressTracker from "@/components/ProgressTracker";
 
 export default function App() {
 	const [tasks, setTasks] = useState(() => {
-		const saved = localStorage.getItem("tasks");
-		return saved ? JSON.parse(saved) : defaultTasks;
+		if (typeof window === "undefined") return [];
+		try {
+			const saved = localStorage.getItem("tasks");
+			return saved ? JSON.parse(saved) : [];
+		} catch (e) {
+			console.warn("Failed to read tasks from localStorage:", e);
+			localStorage.removeItem("tasks");
+			return [];
+		}
 	});
 
 	const [searchQuery, setSearchQuery] = useState("");
