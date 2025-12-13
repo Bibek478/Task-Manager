@@ -1,77 +1,87 @@
-# Task Manager (React + Vite)
+# Task Manager - React + Vite
 
-A small task management UI built with React and Vite. Uses Tailwind CSS, Radix UI primitives, and a set of lightweight UI components. Tasks are persisted to localStorage so you can add, edit, delete and filter tasks without a backend.
+A modern, feature-rich task management application built with React and Vite. Manage your tasks efficiently with filtering, pagination, progress tracking, and persistent storage.
 
-Quick features
+## Features
 
-- Create, edit and delete tasks
-- Filter by priority and status, and search by title
-- Simple pagination and progress tracking
-- Local state persisted to localStorage
-- Built with Vite, React, Tailwind, Radix primitives, and shadcn-style components
+- **Add & Edit Tasks**: Create tasks with title, description, priority, and status
+- **Search & Filter**: Find tasks by title, priority level, and status
+- **Pagination**: Browse tasks with 5 tasks per page
+- **Progress Tracking**: Visual progress bar showing completion percentage
+- **Persistent Storage**: Tasks saved to localStorage automatically
+- **Responsive Design**: Clean, light-mode UI with smooth interactions
+- **Edit Modal**: Update tasks with a dedicated modal interface
 
-Prerequisites
+## Prerequisites
 
-- Node.js 18+ (recommended)
-- npm (or yarn/pnpm)
+- Node.js (v16 or higher)
+- npm (v7 or higher)
 
-Getting started
+## Installation
 
-1. Install dependencies
+1. **Clone or navigate to the project directory**
+
+   ```bash
+   cd task-manager-HVA
+   ```
+
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. Run development server
+   This will install key packages used by the project (listed below).
 
-   ```bash
-   npm run dev
-   ```
+## Usage
 
-   Open http://localhost:5173 (or the port printed by Vite)
+### Development Mode
 
-3. Build for production
+```bash
+npm run dev
+```
 
-   ```bash
-   npm run build
-   ```
+Opens the app at `http://localhost:5173`
 
-4. Preview production build locally
+## Project Structure
 
-   ```bash
-   npm run preview
-   ```
+```
+src/
+├── components/
+│   ├── TaskForm.jsx          # Create / edit task modal
+│   ├── TaskItem.jsx          # Individual task card
+│   ├── TaskControls.jsx      # Search & filter controls
+│   ├── ProgressTracker.jsx   # Progress visualization
+│   ├── Pagination.jsx        # Page navigation
+│   └── ui/                   # Reusable UI primitives from Shadcn (button, input, select, dialog, etc.)
+├── App.jsx                   # Main app component (state, persistence, composition)
+├── main.jsx                  # React entry point
+├── App.css                   # Theme variables & component styles
+└── index.css                 # Tailwind base imports
+```
 
-Available scripts
+## Technologies Used
 
-- `npm run dev` — start Vite dev server
-- `npm run build` — build production bundle
-- `npm run preview` — preview the built app
-- `npm run lint` — run ESLint
+- **React 19** - Component-based UI
+- **Vite** - Fast build tool with HMR
+- **Tailwind CSS** - Styling
+- **localStorage** - Client-side persistent storage
 
-Project notes
+## Features Explained
 
-- Styling: Tailwind CSS is used (tailwind v4). The project uses CSS variables declared in `src/App.css`.
-- Components: UI primitives live under `src/components/ui` (input, select, button, dialog, etc.). App-level components are in `src/components` (TaskItem, TaskForm, TaskControls, Pagination, ProgressTracker).
-- Persistence: Tasks are stored in browser localStorage under the "tasks" key. If localStorage data is corrupt, the app will reset that key.
-- Pagination: itemsPerPage is 5 by default in `App.jsx`.
-- Icons: Lucide icons are used.
+- **Add Task** — Enter title, description, set priority (Low/Medium/High) and status (Pending/In Progress/Completed)
+- **Search** — Real-time search by task title
+- **Filters** — Filter by priority level or task status
+- **Edit** — Click "Edit" on a task card to modify it via modal
+- **Delete** — Remove tasks with a delete button (confirmation)
+- **Progress** — Visual progress bar summarizes completed tasks
+- **Pagination** — 5 tasks per page with Prev/Next navigation
+- **Persistence** — All tasks auto-saved to browser localStorage
 
-Troubleshooting
+## Development Notes
 
-- If styles don't apply, ensure Tailwind is set up and PostCSS is configured. Restart dev server after changing tailwind config or CSS entry files.
-- If the app fails to load on first run, check the console for errors about missing packages; run `npm install` again.
-- If localStorage contains invalid JSON, delete the "tasks" key via browser devtools Application → Local Storage.
-
-Where to look in the code
-
-- Entry: `src/main.jsx`
-- App shell & logic: `src/App.jsx`
-- UI components: `src/components/ui/*`
-- App components: `src/components/*.jsx`
-- Tailwind / theme variables: `src/App.css` and `src/index.css`
-
-License
-
-This repository contains example/demo code; add a license if you plan to publish.
+- Tasks persist in localStorage under the "tasks" key.
+- IDs are generated with crypto.randomUUID().
+- Filtering and pagination work together; changing filters resets to page 1.
+- Modal prevents background interaction while editing/creating tasks.
+- Change items-per-page in App.jsx if you want a different pagination size.
